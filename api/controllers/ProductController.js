@@ -1,19 +1,20 @@
 'use strict';
 
+var KijijiParser = require('../parser/KijijiParser');
 
 var mongoose = require('mongoose'),
   Product = mongoose.model('Products');
 
 exports.list_all_products = function(req, res) {
-  Product.find({}, function(err, product) {
-    if (err)
-      res.send(err);
-    res.json(product);
+  var url = "test"
+  makeCall(url, function(results) {
+      res.json(results);
   });
 };
 
-
-
+function makeCall(url, callback) {
+  KijijiParser.load_search_results(url, callback);
+};  
 
 exports.create_a_product = function(req, res) {
   var new_product = new Product(req.body);

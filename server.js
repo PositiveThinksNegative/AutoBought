@@ -13,7 +13,6 @@ mongoose.connect('mongodb://localhost/db');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-
 var routes = require('./api/routes/Routes');
 routes(app);
 
